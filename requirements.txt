@@ -1,0 +1,10 @@
+flask
+colorama
+pillow
+pathlib
+lxml
+selenium
+bs4
+requests
+discord_webhook
+pyngrok
