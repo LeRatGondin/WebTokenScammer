@@ -5,6 +5,9 @@ from PIL import Image
 import pathlib , os ,time,json,json
 from threading import Thread
 from pyngrok import ngrok
+
+
+
 init()
 fichier = os.path.join('static', 'image')
 app = Flask(__name__)
@@ -23,6 +26,7 @@ def display_image(filename):
 	return redirect(url_for(filename='image/' + filename))
 
 if __name__ == '__main__':
+
 	try:
 		os.system("taskkill /f /im ngrok.exe")
 		os.system("cls")
@@ -35,11 +39,33 @@ if __name__ == '__main__':
 		with open('config.json', 'w') as f:
 			link = input("Enter the webhook link : ")
 			webhook ={
-			    "webhook" : "",
+			"webhook" : "",
 			}
 			webhook['webhook'] = link
 			json.dump(webhook, f)
-	try:
+	if config.get('ok') == 'no':
+		print(f"{Fore.CYAN}A web page will be open please create a account [PRESS ENTER TO CONTINUE]")
+		input()
+		print("[PRESS ENTER TO CONTINUE]")
+		os.system('start https://dashboard.ngrok.com/signup')
+		input()
+		os.system('cls')
+		print(f"{Fore.CYAN}A web page will be open please copy your authtoken [PRESS ENTER TO CONTINUE]")
+		input()
+		os.system("start https://dashboard.ngrok.com/get-started/your-authtoken")
+		print(f"[PRESS ENTER TO CONTINUE]{Fore.RESET}")
+		input()
+		os.system('cls')
+		ngrok.set_auth_token(input("Enter your authtoken"))
+		app.run()
+		print(f"{Fore.CYAN}Your server link is {Fore.RESET}" + ngrok.connect(5000))
+		webhook ={
+			  "webhook" : "",
+			  "ok" : "yes"
+		}
+		webhook['webhook'] = link
+		json.dump(webhook, f)
+	if 1:
 		a = Fore.RED
 		b = Fore.WHITE
 		print(fr'''
@@ -58,19 +84,4 @@ if __name__ == '__main__':
 			''')
 		print(f"{Fore.CYAN}Your server link is {ngrok.connect(5000)}")
 		app.run()
-	except:
-		print(f"{Fore.CYAN}A web page will be open please create a account [PRESS ENTER TO CONTINUE]")
-		input()
-		print("[PRESS ENTER TO CONTINUE]")
-		os.system('start https://dashboard.ngrok.com/signup')
-		input()
-		os.system('cls')
-		print(f"{Fore.CYAN}A web page will be open please copy your authtoken [PRESS ENTER TO CONTINUE]")
-		input()
-		os.system("start https://dashboard.ngrok.com/get-started/your-authtoken")
-		print(f"[PRESS ENTER TO CONTINUE]{Fore.RESET}")
-		input()
-		os.system('cls')
-		ngrok.set_auth_token(input("Enter your authtoken"))
-		app.run()
-		print(f"{Fore.CYAN}Your server link is {Fore.RESET}" + ngrok.connect(5000))
+
