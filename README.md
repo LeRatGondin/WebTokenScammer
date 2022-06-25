@@ -18,8 +18,6 @@ La victime a juste a cliquer sur le lien scanner le qr code avec l'application d
 
 ![image](https://user-images.githubusercontent.com/44407018/154119668-4ac2d147-92cc-4e79-94a7-595f76ff950f.png)
 
-## Problemes Connus
-Verifiez fichier chromedriver.exe est de la même version que la version actuelle de votre navigateur Web Chrome. Pour vérifier votre version actuelle de Chrome,et telechargez la version correspondante ici  https://chromedriver.chromium.org/downloads
 
 **ATTENTION** ce script crée un qr code toutes les deux minutes pour chaques personnes presentes sur le site , cela peut presenter des lags sur le pc hote et énormement de fichiers 
 ## Screenshot
