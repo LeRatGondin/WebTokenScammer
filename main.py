@@ -5,6 +5,7 @@ from PIL import Image
 import pathlib , os ,time,json,json
 from threading import Thread
 from pyngrok import ngrok
+import chromedriver_binary
 
 
 
